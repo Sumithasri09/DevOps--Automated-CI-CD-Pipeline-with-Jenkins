@@ -1,0 +1,1 @@
+Implemented a CI/CD pipeline for e-commerce portal using Jenkins. Configured workflows to run automated tests on code pushes, build Docker images upon successful tests and deploy the containerized app to a test environment
