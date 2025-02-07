@@ -1,0 +1,20 @@
+kind: deployment
+apiversion: apps/v1
+metadata:
+  name: devops
+specs:
+  replicas: 3
+selector:
+  matchlabels:
+    app: devops
+template:
+  metadata:
+    label:
+      app: devops
+  spec:
+    container:
+    - name: devops
+    image: sumitha(hubusrid)/devops_project(imagename)
+    imagepulpolicy: always
+    ports:
+    - containerport: 80    
