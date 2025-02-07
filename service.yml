@@ -1,0 +1,14 @@
+kind: service
+apiversion: v1
+metadata:
+  name: devops
+  labels:
+    apps: devops
+spec:
+  ports:
+    -port: 8080
+    targetport: 80
+    nodeport: 80
+selector:
+  apps: devops
+type: loadbalancer
