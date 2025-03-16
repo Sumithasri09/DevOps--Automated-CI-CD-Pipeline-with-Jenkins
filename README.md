@@ -1,87 +1,81 @@
-Automated CI/CD Pipeline with Jenkins
-Summary
-This project implements a Continuous Integration/Continuous Deployment (CI/CD) pipeline for an e-commerce portal using Jenkins. The pipeline automates code testing, builds Docker images after successful tests, and deploys the containerized application to a test environment.
+# Automated CI/CD Pipeline with Jenkins
 
-Features
-Automated Code Integration: Leveraging Git webhooks to trigger Jenkins pipelines automatically upon code changes.
+## Summary
+This project sets up an automated Continuous Integration/Continuous Deployment (CI/CD) pipeline for an e-commerce portal using Jenkins. It automates:
+- Code integration and testing.
+- Building Docker images after successful tests.
+- Deploying the containerized application to a test environment via Kubernetes and Ansible.
 
-Docker Integration: Builds Docker images and pushes them to Docker Hub for containerized deployment.
+## Workflow
+1. **Push Dockerfile to GitHub Repository**:
+   - Set up GitHub webhooks to automatically send updates to Jenkins.
+2. **Code Integration**:
+   - Jenkins pulls updated files from the repository when developers push or modify code.
+3. **Deployment**:
+   - Jenkins sends the files to Kubernetes and Ansible servers for containerized deployment.
+4. **Website Access**:
+   - The deployed application is accessible via a public IP from the Kubernetes cluster.
 
-Kubernetes Deployment: Deploys the application in Kubernetes clusters with two replica pods for high availability.
+## Architecture
+- **Three Instances Required**:
+  - `Jenkins` (t2.micro)
+  - `Docker & Ansible` (t2.micro)
+  - `Kubernetes` (t2/t3.medium)
 
-Ansible Automation: Manages Kubernetes deployments using Ansible playbooks.
+## Pre-Requisites
+- Git
+- Linux System
+- Docker Hub Account
+- Ansible
+- Kubernetes
 
-Scalable Architecture: Utilizes three instances for Jenkins, Docker+Ansible, and Kubernetes for efficient pipeline execution.
+## Required Files
+1. `Dockerfile`
+2. `deployment.yml`
+3. `service.yml`
+4. `ansible.yml`
 
-Pre-Requisites
-Git
+---
 
-Linux operating system
+## Setup and Installation
 
-Docker Hub account
-
-Ansible
-
-Kubernetes
-
-Setup and Installation
-Jenkins Server
-Update the package list:
-
-bash
+### Jenkins Server
+```bash
 sudo apt update
-Install Java:
-
-bash
 sudo apt install fontconfig openjdk-17-jre
 java -version
-Add Jenkins keyring and repository:
-
-bash
 sudo wget -O /usr/share/keyrings/jenkins-keyring.asc \
 https://pkg.jenkins.io/debian/jenkins.io-2023.key
 echo "deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc]" \
 https://pkg.jenkins.io/debian binary/ | sudo tee \
 /etc/apt/sources.list.d/jenkins.list > /dev/null
-Install Jenkins:
-
-bash
 sudo apt-get update
-sudo apt-get install jenkins
-Ansible and Docker Server
-Ansible:
+sudo apt-get install Jenkins
 
-bash
+# Ansible & Docker Server Installation
+
+## Install Ansible
+To install Ansible, follow these steps:
+
+```bash
 sudo apt update
 sudo apt install software-properties-common
 sudo add-apt-repository --yes --update ppa:ansible/ansible
 sudo apt install ansible
-Docker:
 
-bash
+## Instal Docker
+To install docker follow these steps,
+```bash
 sudo apt install docker.io -y
 docker --version
 sudo usermod -aG docker ubuntu
-Files Required
-Dockerfile
+cat /etc/group
+newgrp docker
+docker images
+sudo systemctl status docker
 
-deployment.yml
-
-service.yml
-
-ansible.yml
-
-Workflow
-Push the Dockerfile to a GitHub repository and set up webhooks to trigger Jenkins.
-
-Jenkins pulls the code, builds Docker images, and pushes them to Docker Hub.
-
-Ansible playbooks deploy the application to Kubernetes using YAML files (deployment.yml and service.yml).
-
-Access the deployed application through a browser using Kubernetes' public IP and port configuration.
-
-Contributions
+## Contributions
 Contributions are welcome! Please create an issue or a pull request for any enhancements.
 
-License
+## License
 This project is open-source. Feel free to use and modify as needed.
