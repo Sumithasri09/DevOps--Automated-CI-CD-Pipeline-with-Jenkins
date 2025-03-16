@@ -52,9 +52,9 @@ https://pkg.jenkins.io/debian binary/ | sudo tee \
 sudo apt-get update
 sudo apt-get install Jenkins
 
-# Ansible & Docker Server Installation
+##** Ansible & Docker Server Installation**
 
-## Install Ansible
+###** Install Ansible**
 To install Ansible, follow these steps:
 
 ```bash
@@ -63,7 +63,7 @@ sudo apt install software-properties-common
 sudo add-apt-repository --yes --update ppa:ansible/ansible
 sudo apt install ansible
 
-## Instal Docker
+###** Instal Docker**
 To install docker follow these steps,
 ```bash
 sudo apt install docker.io -y
@@ -74,8 +74,6 @@ newgrp docker
 docker images
 sudo systemctl status docker
 
-## Contributions
-Contributions are welcome! Please create an issue or a pull request for any enhancements.
+##**Result**
+ After deployment, access your application by copying the Kubernetes public IP along with the port (e.g., `http://<public-ip>:31200`) in your browser.
 
-## License
-This project is open-source. Feel free to use and modify as needed.
