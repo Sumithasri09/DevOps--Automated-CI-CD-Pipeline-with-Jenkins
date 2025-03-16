@@ -50,11 +50,12 @@ echo "deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc]" \
 https://pkg.jenkins.io/debian binary/ | sudo tee \
 /etc/apt/sources.list.d/jenkins.list > /dev/null
 sudo apt-get update
-sudo apt-get install Jenkins
+sudo apt-get install jenkins
+```
 
-##** Ansible & Docker Server Installation**
+## Ansible & Docker Server Installation
 
-###** Install Ansible**
+### Install Ansible
 To install Ansible, follow these steps:
 
 ```bash
@@ -62,9 +63,11 @@ sudo apt update
 sudo apt install software-properties-common
 sudo add-apt-repository --yes --update ppa:ansible/ansible
 sudo apt install ansible
+```
 
-###** Instal Docker**
-To install docker follow these steps,
+### Install Docker
+To install Docker, follow these steps:
+
 ```bash
 sudo apt install docker.io -y
 docker --version
@@ -73,7 +76,8 @@ cat /etc/group
 newgrp docker
 docker images
 sudo systemctl status docker
+```
 
-##**Result**
- After deployment, access your application by copying the Kubernetes public IP along with the port (e.g., `http://<public-ip>:31200`) in your browser.
+## Result
+After deployment, access your application by copying the Kubernetes public IP along with the port (e.g., `http://<public-ip>:31200`) in your browser.
 
